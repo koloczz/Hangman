@@ -74,8 +74,8 @@ namespace Hangman
                 Console.WriteLine($"\nHere are the rules:\n" +
                     $"\nIn order to win, you have to guess random country's capital name. " +
                     $"\nYou start with {lives} lives. You will lose one life after wrong letter guess or two lives after wrong whole word guess." +
-                    $"\nGame is over when You reach 0 lives.\n");
-                Console.WriteLine($"\nWould You like to guess capitals only from [E]urope or from a whole [W]orld? (pick E or W and press <Enter>)\n");
+                    $"\nGame is over when you reach 0 lives.\n");
+                Console.WriteLine($"\nWould you like to guess capitals only from [E]urope or from a whole [W]orld? (pick E or W and press <Enter>)\n");
                 string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string countriesAndCapitalsFile = "";
                 while (true)
@@ -281,7 +281,7 @@ namespace Hangman
                     {
                         Console.WriteLine($"\nLetters that do not appear in the word: {notInWord}\n");
                     }
-                    Console.WriteLine($"\nWhole words You tried to guess:\n");
+                    Console.WriteLine($"\nWhole words you tried to guess:\n");
                     guessedCapitalWords.ForEach(i => Console.Write("{0} ", i));
                     if (lives > 0)
                     {
