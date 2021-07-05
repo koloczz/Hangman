@@ -54,6 +54,15 @@ namespace Hangman
 
         static void Main(string[] args)
         {
+            string[] hangmanGallery = {
+            "\n  +---+\n  |   |\n      |\n      |\n      |\n      |\n------+--\n",
+            "\n  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n------+--\n",
+            "\n  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n------+--\n",
+            "\n  +---+\n  |   |\n  O   |\n  |\\  |\n      |\n      |\n------+--\n",
+            "\n  +---+\n  |   |\n  O   |\n /|\\  |\n      |\n      |\n------+--\n",
+            "\n  +---+\n  |   |\n  O   |\n /|\\  |\n   \\  |\n      |\n------+--\n",
+            "\n  +---+\n  |   |\n  O   |\n /|\\  |\n / \\  |\n      |\n------+--\n",
+            };
             string welcome = "Welcome to Jakub Kolodziej's Hangman Game";
             Console.SetCursorPosition((Console.WindowWidth - welcome.Length) / 2, Console.CursorTop);
             Console.WriteLine(welcome);
@@ -92,6 +101,7 @@ namespace Hangman
                 Console.WriteLine($"{maskedCapital}");
                 Stopwatch stopWatch = new Stopwatch();
                 stopWatch.Start();
+                Console.WriteLine($"{hangmanGallery[6 - lives]}");
                 while (lives > 0)
                 {
                     Console.WriteLine("\nWould you like to enter a letter [press L] or a whole word [press W]?");
@@ -248,6 +258,7 @@ namespace Hangman
                         Console.WriteLine($"\n{combinedResults}\n");
                         break;
                     }
+                    Console.WriteLine($"{hangmanGallery[6 - lives]}");
                     if (notInWord.Length > 1)
                     {
                         Console.WriteLine($"\nLetters that do not appear in the word: {notInWord}\n");
@@ -269,7 +280,7 @@ namespace Hangman
                 }
                 Console.WriteLine("TOP 10\n");
                 string rankingFile = System.IO.Path.Combine(sCurrentDirectory, @"..\..\..\ranking.txt");
-                string rankingFilePath = Path.GetFullPath(countriesAndCapitalsFile);
+                string rankingFilePath = Path.GetFullPath(rankingFile);
                 if (!File.Exists(rankingFilePath))
                 {
                     using (StreamWriter sw = File.CreateText(rankingFilePath))
