@@ -12,7 +12,7 @@ namespace Hangman
     {
         static string ToMaskedWord(string unmaskedWord, string lettersToUnmask)
         {
-            string maskedWord = "";
+            string maskedWord = "\nCapital to guess:\n";
             foreach (char c in unmaskedWord)
             {
                 if (Char.IsWhiteSpace(c))
@@ -66,14 +66,36 @@ namespace Hangman
             string welcome = "Welcome to Jakub Kolodziej's Hangman Game";
             Console.SetCursorPosition((Console.WindowWidth - welcome.Length) / 2, Console.CursorTop);
             Console.WriteLine(welcome);
-
             var random = new Random();
             bool restart = false;
             while (!restart)
             {
                 int lives = 6;
+                Console.WriteLine($"\nHere are the rules:\n" +
+                    $"\nIn order to win, you have to guess random country's capital name. " +
+                    $"\nYou start with {lives} lives. You will lose one life after wrong letter guess or two lives after wrong whole word guess." +
+                    $"\nGame is over when You reach 0 lives.\n");
+                Console.WriteLine($"\nWould You like to guess capitals only from [E]urope or from a whole [W]orld? (pick E or W and press <Enter>)\n");
                 string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string countriesAndCapitalsFile = System.IO.Path.Combine(sCurrentDirectory, @"..\..\..\countries_and_capitals.txt");
+                string countriesAndCapitalsFile = "";
+                while (true)
+                {
+                    string userChoice = Console.ReadLine().ToUpper();
+                    if (userChoice == "E")
+                    {
+                        countriesAndCapitalsFile = System.IO.Path.Combine(sCurrentDirectory, @"..\..\..\countries_and_capitals_europe.txt");
+                        break;
+                    }
+                    else if (userChoice == "W")
+                    {
+                        countriesAndCapitalsFile = System.IO.Path.Combine(sCurrentDirectory, @"..\..\..\countries_and_capitals.txt");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nWrong button, pick again.\n");
+                    }
+                }
                 string countriesAndCapitalsFilePath = Path.GetFullPath(countriesAndCapitalsFile);
                 if (!File.Exists(countriesAndCapitalsFilePath))
                 {
@@ -93,10 +115,6 @@ namespace Hangman
                 bool result;
                 int guessingTries = 0;
                 string combinedResults = "";
-                Console.WriteLine($"\nHere are the rules:\n" +
-                    $"\nIn order to win, you have to guess random country's capital name. " +
-                    $"\nYou start with {lives} lives. You will lose one life after wrong letter guess or two lives after wrong whole word guess." +
-                    $"\nGame is over when You reach 0 lives.\n");
                 string maskedCapital = ToMaskedWord(secretCapital, guessedCapitalLetters);
                 Console.WriteLine($"{maskedCapital}");
                 Stopwatch stopWatch = new Stopwatch();
@@ -275,7 +293,7 @@ namespace Hangman
                     }
                     if (lives == 1)
                     {
-                        Console.WriteLine($"\n\nThe word to guess is the capital of {secretCountry}.");
+                        Console.WriteLine($"\nThe word to guess is the capital of {secretCountry}.");
                     }
                 }
                 Console.WriteLine("TOP 10\n");
@@ -298,17 +316,23 @@ namespace Hangman
                 }
                 File.WriteAllText(rankingFilePath, string.Empty);
                 File.WriteAllLines(rankingFilePath, sortedHighscores);
-                Console.WriteLine($"\nWould you like to try again? \n[Y]es or [N]o?");
-                switch (Console.ReadKey().Key)
+                Console.WriteLine($"\nWould you like to try again? \nPick [Y]es or [N]o and press <Enter>");
+                while (true)
                 {
-                    case ConsoleKey.N:
+                    string userChoice = Console.ReadLine().ToUpper();
+                    if (userChoice == "N")
+                    {
                         restart = true;
                         break;
-                    case ConsoleKey.Y:
+                    }
+                    else if (userChoice == "Y")
+                    {
                         break;
-                    default:
-                        Console.WriteLine("\nWrong button.\n");
-                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nWrong button, pick again.\n");
+                    }
                 }
                 Console.Clear();
 
