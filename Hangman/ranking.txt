@@ -1,10 +1,10 @@
 kuba | 04.07.2021 15:54:08 | 0m 9s | 1 | VADUZ
 kuba | 04.07.2021 15:59:35 | 0m 10s | 1 | PORT LOUIS
-kolocz | 05.07.2021 17:51:08 | 0m 11s | 1 | LISBON
-kolocz | 05.07.2021 17:51:41 | 0m 11s | 1 | BELGRADE
+kuba | 05.07.2021 17:51:08 | 0m 11s | 1 | LISBON
+kuba | 05.07.2021 17:51:41 | 0m 11s | 1 | BELGRADE
 kuba | 04.07.2021 15:52:48 | 0m 13s | 1 | STOCKHOLM
+kuba | 05.07.2021 22:57:14 | 0m 13s | 1 | KYIV
 kuba | 04.07.2021 22:54:14 | 0m 25s | 1 | RAMALLAH
-kolocz | 05.07.2021 17:48:02 | 0m 35s | 2 | ANDORRA LA VELLA
+kuba | 05.07.2021 17:48:02 | 0m 35s | 2 | ANDORRA LA VELLA
 kuba | 04.07.2021 01:10:10 | 1m 4s | 7 | APIA
 kuba | 04.07.2021 01:10:10 | 1m 5s | 7 | APIA
-kuba | 04.07.2021 01:10:10 | 1m 5s | 8 | APIA
