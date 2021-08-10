@@ -1,1 +1,1 @@
-# hangman
+I've been coding for a few years now, it started as a hobby, then turned into my small business after learning Python. However, I've never worked professionally as a developer for any major company. I'm ready to learn new languages and technologies and I'm looking forward to start my professional career with Motorola Academy.
