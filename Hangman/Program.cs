@@ -309,7 +309,11 @@ namespace Hangman
                 string[] ranking = File.ReadAllLines(rankingFilePath);
                 List<string> highscores = new List<string>(ranking);
                 highscores.Add(combinedResults);
-                var sortedHighscores = highscores.OrderBy(score => Convert.ToInt32(score.Split(" | ")[3])).ThenBy(time => (Convert.ToInt32(time.Split(" | ")[2].Replace("s", string.Empty).Split("m ")[0]) * 60 + Convert.ToInt32(time.Split(" | ")[2].Replace("s", string.Empty).Split("m ")[1]))).Take(10);
+                if (highscores.Count > 10)
+                {
+                    highscores.RemoveAt(highscores.Count - 1);
+                }
+                var sortedHighscores = highscores.OrderBy(score => Convert.ToInt32(score.Split(" | ")[3])).ThenBy(time => (Convert.ToInt32(time.Split(" | ")[2].Replace("s", string.Empty).Split("m ")[0]) * 60 + Convert.ToInt32(time.Split(" | ")[2].Replace("s", string.Empty).Split("m ")[1])));
                 foreach (string h in sortedHighscores)
                 {
                     Console.WriteLine($"{h}");
